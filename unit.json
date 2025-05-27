@@ -1,0 +1,31 @@
+{
+  "listeners": {
+    "*:80": {
+      "pass": "routes"
+    }
+  },
+  "applications": {
+    "fastapi": {
+      "type": "python3",
+      "path": "/app",
+      "module": "api.server",
+      "callable": "app"
+    }
+  },
+  "routes": [
+    {
+      "match": {
+        "uri": "/api/*"
+      },
+      "action": {
+        "pass": "applications/fastapi"
+      }
+    },
+    {
+      "action": {
+        "share": "/app/gui$uri",
+        "types": ["image/*", "font/*", "text/*", "application/*"]
+      }
+    }
+  ]
+}

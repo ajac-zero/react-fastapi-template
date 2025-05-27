@@ -1,0 +1,10 @@
+[project]
+name = "react-fastapi-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Anibal Angulo", email = "ajcardoza2000@gmail.com" }]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.12",
+]
