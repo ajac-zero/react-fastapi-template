@@ -109,11 +109,11 @@ function App() {
               <div className="text-left text-muted-foreground space-y-4">
                 <p>1. Start the FastAPI backend:</p>
                 <code className="block bg-muted p-3 rounded text-sm">
-                  uv run uvicorn api.server:app --reload
+                  just dev back
                 </code>
                 <p>2. Start the React frontend:</p>
                 <code className="block bg-muted p-3 rounded text-sm">
-                  pnpm run dev
+                  just dev front
                 </code>
               </div>
             </div>
