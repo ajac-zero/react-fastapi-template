@@ -8,3 +8,12 @@ requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.115.12",
 ]
+
+[dependency-groups]
+dev = [
+    "uvicorn>=0.34.2",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"

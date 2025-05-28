@@ -1,8 +1,44 @@
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import fastapiLogo from "./assets/fastapi.svg";
 import { Button } from "@/components/ui/button";
 
 function App() {
+  const [counter, setCounter] = useState<number | null>(null);
+
+  // Fetch the current counter value
+  const fetchCounter = async () => {
+    try {
+      const response = await fetch("/api/counter");
+      const data = await response.json();
+      setCounter(data.counter);
+    } catch (error) {
+      console.error("Failed to fetch counter:", error);
+    }
+  };
+
+  // Increment the counter
+  const incrementCounter = async () => {
+    try {
+      await fetch("/api/counter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: 1 }),
+      });
+      // Fetch the updated counter value
+      await fetchCounter();
+    } catch (error) {
+      console.error("Failed to increment counter:", error);
+    }
+  };
+
+  // Fetch counter on component mount
+  useEffect(() => {
+    fetchCounter();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="container mx-auto max-w-4xl">
@@ -39,6 +75,16 @@ function App() {
             A modern full-stack template featuring React for the frontend and
             FastAPI for the backend
           </p>
+
+          {/* Counter section */}
+          <div className="py-8">
+            <div className="text-2xl font-semibold mb-4">
+              Counter: <span className="text-primary">{counter ?? "..."}</span>
+            </div>
+            <Button variant="default" size="lg" onClick={incrementCounter}>
+              Increment Counter
+            </Button>
+          </div>
 
           <div className="flex justify-center gap-4">
             <Button
