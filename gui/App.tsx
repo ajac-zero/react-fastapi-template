@@ -43,13 +43,17 @@ function App() {
     <div className="min-h-screen bg-background p-8">
       <div className="container mx-auto max-w-4xl">
         {/* Logo section */}
-        <div className="flex justify-center items-center gap-8 mb-8">
+        <div className="flex justify-center items-center gap-8 mb-12">
           <a
             href="https://fastapi.tiangolo.com"
             target="_blank"
             className="hover:scale-110 transition-transform"
           >
-            <img src={fastapiLogo} className="h-16 w-16" alt="FastAPI logo" />
+            <img
+              src={fastapiLogo}
+              className="h-16 w-16 animate-spin-slow"
+              alt="FastAPI logo"
+            />
           </a>
           <span className="text-4xl font-bold text-muted-foreground">+</span>
           <a
@@ -66,25 +70,15 @@ function App() {
         </div>
 
         {/* Main content */}
-        <div className="text-center space-y-6">
+        <div className="text-center space-y-8">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary/90 to-primary bg-clip-text text-transparent">
             React + FastAPI Template
           </h1>
 
-          <p className="text-muted-foreground text-lg">
-            A modern full-stack template featuring React for the frontend and
-            FastAPI for the backend
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            A full-stack template featuring React for the frontend and FastAPI
+            for the backend
           </p>
-
-          {/* Counter section */}
-          <div className="py-8">
-            <div className="text-2xl font-semibold mb-4">
-              Counter: <span className="text-primary">{counter ?? "..."}</span>
-            </div>
-            <Button variant="default" size="lg" onClick={incrementCounter}>
-              Increment Counter
-            </Button>
-          </div>
 
           <div className="flex justify-center gap-4">
             <Button
@@ -101,21 +95,37 @@ function App() {
                 window.open("https://fastapi.tiangolo.com/tutorial/", "_blank")
               }
             >
-              FastAPI Docs
+              Learn FastAPI
             </Button>
           </div>
 
-          <div className="mt-12 p-6 bg-card rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Quick Start</h2>
-            <div className="text-left text-muted-foreground space-y-2">
-              <p>1. Start the FastAPI backend:</p>
-              <code className="block bg-muted p-2 rounded">
-                cd backend && uvicorn main:app --reload
-              </code>
-              <p>2. Start the React frontend:</p>
-              <code className="block bg-muted p-2 rounded">
-                cd frontend && npm run dev
-              </code>
+          {/* Grid layout for Counter and Quick Start */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {/* Quick Start section */}
+            <div className="bg-card rounded-lg shadow-lg p-8">
+              <h2 className="text-xl font-semibold mb-6">
+                Development Quickstart
+              </h2>
+              <div className="text-left text-muted-foreground space-y-4">
+                <p>1. Start the FastAPI backend:</p>
+                <code className="block bg-muted p-3 rounded text-sm">
+                  uv run uvicorn api.server:app --reload
+                </code>
+                <p>2. Start the React frontend:</p>
+                <code className="block bg-muted p-3 rounded text-sm">
+                  pnpm run dev
+                </code>
+              </div>
+            </div>
+            {/* Counter section */}
+            <div className="bg-card rounded-lg shadow-lg p-8 flex flex-col items-center justify-center gap-6">
+              <h2 className="text-xl font-semibold">Demo Counter</h2>
+              <div className="text-4xl font-bold text-primary">
+                {counter !== null ? counter : "..."}
+              </div>
+              <Button variant="default" size="lg" onClick={incrementCounter}>
+                Increment Counter
+              </Button>
             </div>
           </div>
         </div>
@@ -123,8 +133,10 @@ function App() {
         {/* Footer */}
         <footer className="mt-16 text-center text-sm text-muted-foreground">
           <p>
-            Edit <code className="text-primary">gui/App.tsx</code> and save to
-            test HMR
+            In development mode, edit{" "}
+            <code className="text-primary">gui/App.tsx</code> or{" "}
+            <code className="text-primary">api/server.py</code> and save to test
+            Hot Module Reload
           </p>
         </footer>
       </div>
