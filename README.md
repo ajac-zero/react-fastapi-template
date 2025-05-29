@@ -2,6 +2,8 @@
 
 A modern full-stack template featuring React for the frontend and FastAPI for the backend, bundled together in a single container using NGINX Unit.
 
+[Check out the tutorial blog!](https://ajac-zero.com/posts/building-react-fastapi-app-with-nginx-unit/)
+
 ## Features
 
 - **React Frontend**
