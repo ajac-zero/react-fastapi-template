@@ -32,6 +32,12 @@ A modern full-stack template featuring React for the frontend and FastAPI for th
 
 The project is set up for local development with hot-reload capabilities for both frontend and backend.
 
+### Install development dependencies
+
+```bash
+just install
+```
+
 ### Start the Backend
 
 ```bash

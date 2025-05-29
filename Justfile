@@ -4,6 +4,13 @@ tag := 'react-fastapi-container'
 list:
     @just --list --unsorted
 
+# Install all project dependencies
+install:
+    uv sync --dev
+    pnpm i
+
+alias i := install
+
 # Build the unit container
 build:
     docker build -t {{tag}} .
