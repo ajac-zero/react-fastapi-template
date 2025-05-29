@@ -60,7 +60,7 @@ Build and run the production container:
 
 ```bash
 just build
-just up
+just start
 ```
 
 The application will be available at http://localhost:80 with:
